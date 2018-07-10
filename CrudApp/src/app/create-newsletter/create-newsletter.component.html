@@ -1,0 +1,26 @@
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input #documentname matInput placeholder="Title of Newsletter">
+    </mat-form-field>
+</form>
+<div class="button-group"> 
+<button type="submit" mat-raised-button color="primary" (click)="NewsletterSave(documentname.value)">Save</button>
+<button mat-raised-button (click)="NavigateToDashboard();">Cancel</button>
+</div>
+<mat-tab-group style="margin-top:80px;">
+    <mat-tab label="HR">
+    <form [formGroup]="formGroup1" (ngSubmit)="NewsletterSave(documentname.value)">
+      <div [froalaEditor] formControlName="HRmarkup"></div>
+      </form>
+    </mat-tab>
+    <mat-tab label="Admin">
+    <form [formGroup]="formGroup2" (ngSubmit)="NewsletterSave(documentname.value)">
+      <div [froalaEditor] formControlName="Amarkup"></div>
+     </form>
+    </mat-tab>
+    <mat-tab label="Marketing">
+        <form [formGroup]="formGroup3" (ngSubmit)="NewsletterSave(documentname.value)">
+      <div [froalaEditor] formControlName="Mrmarkup"></div>
+      </form>
+    </mat-tab>
+  </mat-tab-group>

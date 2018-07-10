@@ -1,0 +1,7 @@
+   <h3 style="text-align: center;margin-top:20px;"><u>{{ this.NewsletterData.documentname}}</u></h3>
+   <button mat-raised-button color="primary" style="float:right;" (click)="NavigateToDashboard();">Back To Dashboard</button>
+   <mat-tab-group style="margin-top:80px;">
+      <mat-tab label="HR">{{this.NewsletterData.HRmarkup}}</mat-tab>
+      <mat-tab label="Admin">{{this.NewsletterData.Amarkup}}</mat-tab>
+      <mat-tab label="Marketing">{{this.NewsletterData.Mrmarkup}}</mat-tab>
+    </mat-tab-group>

@@ -1,0 +1,17 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+
+  .input.mat-input-element{
+      width:50%;
+  }
+
+  .mat-form-field-wrapper {
+    position: relative;
+    width: 50%;
+}

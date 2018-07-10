@@ -1,0 +1,49 @@
+<mat-form-field class="mat-form-field-table newsletter-filter-search" >
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+  </mat-form-field>
+<button mat-raised-button color="primary"style="position:absolute; right:130px; top:120px;" (click)="CreateNewsletter();">Add Newsletter</button>
+<div class="mat-elevation-z8" style="margin-top:160px;">
+    <mat-table [dataSource]="dataSource">
+  
+       
+      <!-- Position Column -->
+      <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.documentname}} </mat-cell>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="createdate">
+        <mat-header-cell *matHeaderCellDef>Create Date</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.createdate | date: 'dd-MM-yyyy'}} </mat-cell>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="createdby">
+        <mat-header-cell *matHeaderCellDef>Created By</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.createdby}} </mat-cell>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+            <span class="mat-icon-button" [matMenuTriggerFor]="menu">
+                <mat-icon>more_horiz</mat-icon>
+              </span>
+              <mat-menu #menu="matMenu" class="dropdown">
+                  <button mat-menu-item  [routerLink]="[row._id]"><mat-icon>mode_edit</mat-icon>Edit</button>
+                  <button mat-menu-item (click)="openDialog(row)" ><mat-icon>control_point_duplicate</mat-icon>Duplicate</button> 
+                  <button mat-menu-item [routerLink]="['view/'+row._id]"><mat-icon>exit_to_app</mat-icon>View</button> 
+                  <button mat-menu-item (click)="openDeleteDialog(row)"><mat-icon>delete</mat-icon>Delete</button> 
+                </mat-menu>
+              </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  
+    <mat-paginator [pageSize]="5"
+    [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
+  </div>
